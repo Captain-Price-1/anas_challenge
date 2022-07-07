@@ -9,6 +9,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Welcome />} />
+
         <Route path="/login" element={<Login />} />
         <Route
           path="/menu"

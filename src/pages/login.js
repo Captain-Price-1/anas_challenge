@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux/es/exports";
+import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { addUser } from "../user/user";
+import user, { addUser } from "../user/user";
 
 const Login = () => {
   const dispatch = useDispatch();
