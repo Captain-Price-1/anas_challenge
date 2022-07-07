@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux/es/exports";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { addUser } from "../user/user";
-import { Navigate } from "react-router-dom";
+
 const Login = () => {
   const dispatch = useDispatch();
-  const { user } = useSelector((store) => {
-    return store.user;
-  });
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,7 +15,6 @@ const Login = () => {
   const [login, setLogin] = useState(false);
 
   const handleClick = (e) => {
-    console.log("register");
     e.preventDefault();
     if (!email || !password || !name) {
       setAlert(true);
@@ -37,7 +34,7 @@ const Login = () => {
 
   const handleCheck = (e) => {
     e.preventDefault();
-    console.log("login");
+
     if (!email || !password) {
       setAlert(true);
       setTimeout(() => {
@@ -49,9 +46,7 @@ const Login = () => {
     const userEmail = localStorage.getItem("email");
     const userPassword = localStorage.getItem("password");
 
-    console.log(userEmail, email, userPassword, password);
     if (userEmail === email && userPassword === password) {
-      console.log("inside the condtion");
       navigate("/menu");
     } else {
       setAlert(true);

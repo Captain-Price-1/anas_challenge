@@ -1,10 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-// import { BiRestaurant } from "react-icons/fa";
+import React, { useEffect } from "react";
+
 import { Logo, CartIcon } from "./icons";
-import { useSelector } from "react-redux/es/exports";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux/es/hooks/useDispatch";
+import { useSelector, useDispatch } from "react-redux/";
 import { dist } from "../cartReducer/cartSlice";
 const Navbar = () => {
   const { cartItems } = useSelector((store) => {
@@ -13,6 +10,7 @@ const Navbar = () => {
   const { distinctItems } = useSelector((store) => {
     return store.cart;
   });
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(dist());

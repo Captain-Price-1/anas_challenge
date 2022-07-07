@@ -45,12 +45,11 @@ nav h1 {
   height: 100%;
   align-items: center;
   justify-content: center;
-  /* text-align: center; */
 }
 .welcome-body h1 {
   font-weight: 400;
   font-size: 2.5rem;
-  /* font-size: 10vw; */
+
   text-align: center;
   margin-bottom: 1rem;
 }
@@ -76,7 +75,6 @@ nav h1 {
   background-repeat: no-repeat;
 
   height: 100vh;
-  /* margin-top: 2rem; */
 
   display: flex;
   align-items: center;
@@ -94,7 +92,7 @@ nav h1 {
   font-size: 1.5rem;
   margin: 3rem;
   display: flex;
-  /* align-items: center; */
+
   justify-content: space-between;
   flex-direction: column;
   width: 100%;
@@ -117,12 +115,11 @@ input {
 }
 textarea {
   margin-top: 00.2rem;
-  /* width: 30%; */
+
   padding: 0.2rem;
   resize: none;
 }
 .submit-btn {
-  /* width: 20%; */
   font-size: 1rem;
   border-radius: 0.5rem;
   letter-spacing: 0.02in;
@@ -167,13 +164,13 @@ textarea {
   width: 100%;
   display: grid;
   gap: 2rem;
-  /* grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); */
+
   grid-template-columns: repeat(2, 1fr);
 }
 .single-item {
   min-height: 18rem;
   margin: 1rem;
-  /* min-width: 15rem; */
+
   box-shadow: 1px 1px 1px 1px grey;
 }
 .container-name-price {
@@ -188,7 +185,6 @@ textarea {
 .single-item img {
   height: 10rem;
 
-  /* height: auto; */
   width: 100%;
 }
 .single-item h1 {
@@ -199,7 +195,6 @@ textarea {
   height: 2rem;
 }
 .hidden {
-  /* display: none; */
   opacity: 0;
 }
 .increase-btn {
@@ -251,10 +246,7 @@ textarea {
     flex-wrap: wrap;
   }
   .single-item img {
-    /* max-width: 15rem; */
     height: auto;
-    /* min-width: 20rem; */
-    /* align-items: center; */
   }
 }
 

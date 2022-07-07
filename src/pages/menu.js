@@ -1,9 +1,7 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import data from "../data";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux/es/exports";
-import { useDispatch } from "react-redux/es/exports";
+import { useSelector, useDispatch } from "react-redux/";
 import { increase, decrease, removeItem } from "../cartReducer/cartSlice";
 const Menu = () => {
   const dispatch = useDispatch();
