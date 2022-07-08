@@ -1,7 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const email = localStorage.getItem("email");
+// const password = localStorage.getItem("password");
+// const name = localStorage.getItem("name");
+// const loggedUser = { email, password, name };
+
 const initialState = {
-  user: "",
+  user: email,
 };
 
 export const userSlice = createSlice({
@@ -12,6 +17,7 @@ export const userSlice = createSlice({
       state.user = action.payload;
       localStorage.setItem("email", action.payload.email);
       localStorage.setItem("password", action.payload.password);
+      console.log(state.user);
     },
   },
 });

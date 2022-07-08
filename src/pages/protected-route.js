@@ -5,8 +5,11 @@ const ProtectedRoute = ({ children }) => {
   const { user } = useSelector((store) => {
     return store.user;
   });
+
   console.log(user);
-  if (!user) {
+  if (user === null) {
+    console.log(user);
+    console.log("inside the nai");
     return <Navigate to="/" />;
   }
   return children;
