@@ -6,10 +6,7 @@ const ProtectedRoute = ({ children }) => {
     return store.user;
   });
 
-  console.log(user);
   if (user === null) {
-    console.log(user);
-    console.log("inside the nai");
     return <Navigate to="/" />;
   }
   return children;

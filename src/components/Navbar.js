@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
-
 import { Logo, CartIcon } from "./icons";
 import { useSelector, useDispatch } from "react-redux/";
 import { dist } from "../cartReducer/cartSlice";
-const Navbar = () => {
+const Navbar = ({ isModalOpen, setIsModal }) => {
   const { cartItems } = useSelector((store) => {
     return store.cart;
   });
@@ -23,12 +22,15 @@ const Navbar = () => {
           <Logo className="logo" />
           <h1>Food's Restaurant</h1>
         </div>
-        <div className={`cart ${distinctItems === 0 && "hidden"}`}>
+        <button
+          onClick={() => setIsModal(true)}
+          className={`cart ${distinctItems === 0 && "hidden"}`}
+        >
           <CartIcon />
           <div>
             <span className="cart-span">{distinctItems}</span>
           </div>
-        </div>
+        </button>
       </section>
     </nav>
   );

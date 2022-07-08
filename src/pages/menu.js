@@ -2,19 +2,41 @@ import React, { useState } from "react";
 import data from "../data";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux/";
-import { increase, decrease, removeItem } from "../cartReducer/cartSlice";
-const Menu = () => {
+import {
+  increase,
+  decrease,
+  removeItem,
+  reset,
+} from "../cartReducer/cartSlice";
+import Modal from "./Modal";
+import { useEffect } from "react";
+const Menu = ({ isModalOpen, setIsModal }) => {
   const dispatch = useDispatch();
-  const [items, setItems] = useState(data);
+  // const [items, setItems] = useState(data);
   const { cartItems, distinctItems } = useSelector((store) => {
     return store.cart;
   });
+  const [tempCart, setTempCart] = useState(cartItems);
+
+  const closeModal = () => {
+    setIsModal(false);
+  };
+  console.log(isModalOpen);
+
+  console.log(tempCart, "tempKART");
+
   return (
     <article className="main-menu-container">
       <section className="main-menu">
+        <Modal
+          tempCart={tempCart}
+          setTempCart={setTempCart}
+          isModalOpen={isModalOpen}
+          setIsModal={setIsModal}
+          closeModal={closeModal}
+        />
         {cartItems.map((item) => {
           const { id, name, price, amount, total, cost, img } = item;
-          console.log(item);
           return (
             <div className="single-item" key={id}>
               <img src={img} alt="" />
@@ -34,6 +56,17 @@ const Menu = () => {
                     className="increase-btn"
                     onClick={() => {
                       dispatch(increase({ id }));
+                      setTempCart(
+                        cartItems.map((item) => {
+                          if (item.id === id) {
+                            return { ...item, amount: item.amount + 1 };
+                          }
+                          if (item.id === id && item.amount === 0) {
+                            return;
+                          }
+                          return { ...item };
+                        })
+                      );
                     }}
                   >
                     +
@@ -42,7 +75,7 @@ const Menu = () => {
                     className={`decrease-btn ${amount === 0 && "greyed-out"}`}
                     onClick={() => {
                       if (amount <= 1) {
-                        dispatch(removeItem(id));
+                        dispatch(reset(id));
                         return;
                       }
                       dispatch(decrease({ id }));
@@ -57,9 +90,9 @@ const Menu = () => {
         })}
       </section>
       {distinctItems >= 1 && (
-        <Link to="/checkout" className="save-checkout">
+        <button onClick={() => setIsModal(true)} className="save-checkout">
           save and checkout
-        </Link>
+        </button>
       )}
     </article>
   );
