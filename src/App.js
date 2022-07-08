@@ -15,7 +15,7 @@ function App() {
         hideCart={hideCart}
       />
       <Routes>
-        <Route path="/" element={<Welcome />} />
+        <Route path="/" element={<Welcome hideCart={hideCart} />} />
 
         {/* <Route path="/login" element={<Login />} /> */}
         {/* <Route

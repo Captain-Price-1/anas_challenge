@@ -3,10 +3,8 @@ import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const Welcome = () => {
-  // const { user } = useSelector((store) => {
-  //   return store.user;
-  // });
+const Welcome = ({ hideCart }) => {
+  hideCart(false);
   return (
     <div className="main-div">
       <div className="welcome-body">

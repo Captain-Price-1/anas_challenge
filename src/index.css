@@ -490,3 +490,9 @@ svg {
 .cart:hover {
   background: rgb(31, 31, 133);
 }
+
+@media screen and (max-width: 600px) {
+  .modal-container {
+    width: 90%;
+  }
+}
