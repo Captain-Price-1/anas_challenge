@@ -1,6 +1,8 @@
 import React from "react";
 
-const Checkout = () => {
+const Checkout = ({ cart, hideCart }) => {
+  hideCart(false);
+
   return (
     <div className="checkout-main">
       <div className="checkout-header">

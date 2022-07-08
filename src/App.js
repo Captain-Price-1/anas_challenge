@@ -5,9 +5,15 @@ import Navbar from "./components/Navbar";
 
 function App() {
   const [isModalOpen, setIsModal] = useState(false);
+  const [cart, hideCart] = useState(true);
   return (
     <BrowserRouter>
-      <Navbar isModalOpen={isModalOpen} setIsModal={setIsModal} />
+      <Navbar
+        isModalOpen={isModalOpen}
+        setIsModal={setIsModal}
+        cart={cart}
+        hideCart={hideCart}
+      />
       <Routes>
         <Route path="/" element={<Welcome />} />
 
@@ -20,11 +26,21 @@ function App() {
             </ProtectedRoute>
           }
         ></Route> */}
+
         <Route
           path="/menu"
-          element={<Menu setIsModal={setIsModal} isModalOpen={isModalOpen} />}
+          element={
+            <Menu
+              setIsModal={setIsModal}
+              isModalOpen={isModalOpen}
+              hideCart={hideCart}
+            />
+          }
         />
-        <Route path="/checkout" element={<Checkout />}></Route>
+        <Route
+          path="/checkout"
+          element={<Checkout cart={cart} hideCart={hideCart} />}
+        ></Route>
       </Routes>
     </BrowserRouter>
   );

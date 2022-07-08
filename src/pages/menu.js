@@ -9,10 +9,10 @@ import {
   reset,
 } from "../cartReducer/cartSlice";
 import Modal from "./Modal";
-import { useEffect } from "react";
-const Menu = ({ isModalOpen, setIsModal }) => {
+const Menu = ({ isModalOpen, setIsModal, hideCart }) => {
+  hideCart(true);
+
   const dispatch = useDispatch();
-  // const [items, setItems] = useState(data);
   const { cartItems, distinctItems } = useSelector((store) => {
     return store.cart;
   });
