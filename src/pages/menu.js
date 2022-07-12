@@ -16,6 +16,21 @@ const Menu = ({ isModalOpen, setIsModal, hideCart }) => {
   const { cartItems, distinctItems } = useSelector((store) => {
     return store.cart;
   });
+
+  const updateCart = (id, action) => {
+    setTempCart(
+      cartItems.map((item) => {
+        if (item.id === id) {
+          return {
+            ...item,
+            amount: action === "decrease" ? item.amount - 1 : item.amount + 1,
+          };
+        }
+        return { ...item };
+      })
+    );
+  };
+
   const [tempCart, setTempCart] = useState(cartItems);
 
   const closeModal = () => {
@@ -56,17 +71,7 @@ const Menu = ({ isModalOpen, setIsModal, hideCart }) => {
                     className="increase-btn"
                     onClick={() => {
                       dispatch(increase({ id }));
-                      setTempCart(
-                        cartItems.map((item) => {
-                          if (item.id === id) {
-                            return { ...item, amount: item.amount + 1 };
-                          }
-                          if (item.id === id && item.amount === 0) {
-                            return;
-                          }
-                          return { ...item };
-                        })
-                      );
+                      updateCart(id, "increase");
                     }}
                   >
                     +
@@ -76,9 +81,16 @@ const Menu = ({ isModalOpen, setIsModal, hideCart }) => {
                     onClick={() => {
                       if (amount <= 1) {
                         dispatch(reset(id));
+                        setTempCart(() => {
+                          const temps = tempCart.filter(
+                            (item) => item.id !== id
+                          );
+                          return temps;
+                        });
                         return;
                       }
                       dispatch(decrease({ id }));
+                      updateCart(id, "decrease");
                     }}
                   >
                     -

@@ -32,11 +32,9 @@ const Modal = ({
   });
   var total = 0;
   const getTotals = () => {
-    console.log("get totals is runnnig");
     let anyvalue = tempCart.map((item) => {
       if (item.cost !== 0) {
         total = total + item.cost;
-        console.log(total);
       }
       return;
     });
@@ -89,10 +87,8 @@ const Modal = ({
     setTempCart(temp);
   };
   useEffect(() => {
-    console.log(tempCart, "useEffect tempkart");
-    // setTempCart(temps);
     let temps = tempCart.filter((item) => item.amount !== 0);
-    console.log(temps, "temps");
+
     setTempCart(temps);
   }, [cartItems]);
 
